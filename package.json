@@ -1,0 +1,42 @@
+{
+  "name": "localforage-typescript-plugin-boilerplate",
+  "version": "1.0.0",
+  "description": "A simple typescript plugin boilerplate for localForage.",
+  "homepage": "https://github.com/localForage-extensions/localForage-typescript-plugin-boilerplate",
+  "main": "dist/localforage-plugin-boilerplate.js",
+  "jsnext:main": "dist/localforage-plugin-boilerplate.es6.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "lint": "tslint -t stylish -c tslint.json 'lib/**/*.ts'",
+    "prebuild": "npm run lint",
+    "build": "rollup -c rollup.config.umd.js && rollup -c rollup.config.es6.js",
+    "pretest": "rollup -c rollup.config.test.js",
+    "test": "mocha build/test-bundle.js",
+    "prepublish": "npm run build && npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/localForage-extensions/localForage-typescript-plugin-boilerplate.git"
+  },
+  "keywords": [
+    "localforage",
+    "plugin"
+  ],
+  "author": "Thodoris Greasidis",
+  "licence": "Apache-2.0",
+  "bugs": {
+    "url": "http://github.com/localForage-extensions/localForage-typescript-plugin-boilerplate/issues"
+  },
+  "devDependencies": {
+    "mocha": "^3.5.0",
+    "rollup": "^0.47.2",
+    "rollup-plugin-multi-entry": "^2.0.1",
+    "rollup-plugin-typescript2": "^0.5.0",
+    "source-map-support": "^0.4.15",
+    "tslint": "^5.6.0",
+    "typescript": "^2.4.2"
+  },
+  "dependencies": {
+    "localforage": "^1.5.0"
+  }
+}
