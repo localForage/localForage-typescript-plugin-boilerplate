@@ -89,7 +89,7 @@ export function extendPrototype(localforage: LocalForage) {
         localforagePrototype.pluginMethod = localforagePluginBoilerplate;
     }
 
-    return localforagePrototype as LocalForagePlugin;
+    return localforage as LocalForagePlugin;
 }
 
 export const extendPrototypeResult = extendPrototype(localforage);

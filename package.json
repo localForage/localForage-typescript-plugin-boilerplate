@@ -5,7 +5,7 @@
   "homepage": "https://github.com/localForage-extensions/localForage-typescript-plugin-boilerplate",
   "main": "dist/localforage-plugin-boilerplate.js",
   "jsnext:main": "dist/localforage-plugin-boilerplate.es6.js",
-  "typings": "dist/index.d.ts",
+  "typings": "dist/lib/index.d.ts",
   "scripts": {
     "lint": "tslint -t stylish -c tslint.json 'lib/**/*.ts'",
     "prebuild": "npm run lint",
@@ -29,14 +29,16 @@
   },
   "devDependencies": {
     "mocha": "^3.5.0",
+    "requirejs": "^2.2.0",
     "rollup": "^0.47.2",
     "rollup-plugin-multi-entry": "^2.0.1",
+    "rollup-plugin-typescript": "^0.8.1",
     "rollup-plugin-typescript2": "^0.5.0",
     "source-map-support": "^0.4.15",
     "tslint": "^5.6.0",
     "typescript": "^2.4.2"
   },
   "dependencies": {
-    "localforage": "^1.5.0"
+    "localforage": ">=1.5.0"
   }
 }

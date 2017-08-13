@@ -1,7 +1,23 @@
-import config from './rollup.config';
+import typescript from 'rollup-plugin-typescript';
 
-config.format = 'umd';
-config.dest = 'dist/localforage-plugin-boilerplate.js';
-config.moduleName = 'localforagePluginBoilerplate';
-
-export default config;
+export default {
+  entry: 'lib/index.ts',
+  format: 'umd',
+  dest: 'dist/localforage-plugin-boilerplate.js',
+  moduleName: 'localforagePluginBoilerplate',
+  // sourceMap: true,
+  plugins: [typescript({
+    tsconfig: false,
+    "allowSyntheticDefaultImports": true,
+    "module": "es2015",
+    "target": "es3",
+    "declaration": false,
+    "noImplicitAny": true,
+    "preserveConstEnums": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "moduleResolution": "node",
+    "outDir": "dist",
+  })]
+};

@@ -1,6 +1,9 @@
-import config from './rollup.config';
+import typescript from 'rollup-plugin-typescript2';
 
-config.format = 'es';
-config.dest = 'dist/localforage-plugin-boilerplate.es6.js';
-
-export default config;
+export default {
+  entry: 'lib/index.ts',
+  format: 'es',
+  dest: 'dist/localforage-plugin-boilerplate.es6.js',
+  // sourceMap: true,
+  plugins: [typescript()]
+};
