@@ -30,6 +30,7 @@
     "url": "http://github.com/localForage-extensions/localForage-typescript-plugin-boilerplate/issues"
   },
   "devDependencies": {
+    "lint-staged": "^7.0.0",
     "mocha": "^3.5.0",
     "prettier": "^1.11.1",
     "rollup": "^0.47.2",
