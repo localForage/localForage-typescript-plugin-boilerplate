@@ -7,8 +7,8 @@
   "jsnext:main": "dist/localforage-plugin-boilerplate.es6.js",
   "typings": "dist/lib/index.d.ts",
   "scripts": {
-    "lint": "tslint -t stylish -c tslint.json 'lib/**/*.ts'",
-    "prebuild": "npm run lint",
+    "lint": "tslint -t stylish -c tslint.json '{lib,test}/**/*.ts'",
+    "prebuild": "npm run prettify && npm run lint",
     "precommit": "lint-staged",
     "prettify": "prettier --write \"lib/**/*.ts\" \"test/**/*.ts\"",
     "build": "rollup -c rollup.config.umd.js && rollup -c rollup.config.es6.js",
@@ -37,7 +37,7 @@
     "rollup-plugin-typescript": "^0.8.1",
     "rollup-plugin-typescript2": "^0.5.0",
     "source-map-support": "^0.4.15",
-    "tslint": "^5.6.0",
+    "tslint": "^5.9.1",
     "typescript": "^2.4.2"
   },
   "dependencies": {
@@ -46,7 +46,7 @@
   "lint-staged": {
     "{lib,test}/**/*.ts": [
       "prettier --write",
-      "git add"
+      "tslint -t stylish --fix"
     ]
   }
 }
