@@ -5,5 +5,6 @@ export default {
   format: 'es',
   dest: 'dist/localforage-plugin-boilerplate.es6.js',
   // sourceMap: true,
-  plugins: [typescript()]
+  plugins: [typescript()],
+  external: ['localforage']
 };

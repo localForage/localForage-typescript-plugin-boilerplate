@@ -19,5 +19,6 @@ export default {
     "strictNullChecks": true,
     "moduleResolution": "node",
     "outDir": "dist",
-  })]
+  })],
+  external: ['localforage']
 };
