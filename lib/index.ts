@@ -6,25 +6,37 @@ import localforage from 'localforage';
 // getDriverPromise(localforage.WEBSQL);
 
 export interface LocalForagePlugin extends LocalForage {
-    _baseMethods: { [methodName: string]: () => any; };
+    _baseMethods: { [methodName: string]: () => any };
     _pluginPrivateVariables: {
         listOfImportantThings: any[];
         callCount: number;
     };
 }
 
-function handleMethodCall(localforageInstance: LocalForagePlugin, methodName: string, args: any) {
-    return localforageInstance.ready()
-        .then(function() {
-            console.log('Invoking ' + methodName + ' with arguments: ', args);
-            const promise = localforageInstance._baseMethods[methodName].apply(localforageInstance, args);
-            promise.then(function(result: any) {
-                console.log('Invoking ' + methodName + ' resolved with: ', result);
-            }, function(err: Error) {
+function handleMethodCall(
+    localforageInstance: LocalForagePlugin,
+    methodName: string,
+    args: any,
+) {
+    return localforageInstance.ready().then(function() {
+        console.log('Invoking ' + methodName + ' with arguments: ', args);
+        const promise = localforageInstance._baseMethods[methodName].apply(
+            localforageInstance,
+            args,
+        );
+        promise.then(
+            function(result: any) {
+                console.log(
+                    'Invoking ' + methodName + ' resolved with: ',
+                    result,
+                );
+            },
+            function(err: Error) {
                 console.log('Invoking ' + methodName + ' rejected with: ', err);
-            });
-            return promise;
-        });
+            },
+        );
+        return promise;
+    });
 }
 
 // wraps the localForage methods of the WrappedLibraryMethods array and
@@ -41,10 +53,15 @@ function wireUpMethods(localforageInstance: LocalForagePlugin) {
         'setItem',
     ];
 
-    function wireUpMethod(localforageInstance: LocalForagePlugin, methodName: string) {
-        localforageInstance._baseMethods = localforageInstance._baseMethods || {};
-        localforageInstance._baseMethods[methodName] =
-            (localforageInstance as any)[methodName] as () => any;
+    function wireUpMethod(
+        localforageInstance: LocalForagePlugin,
+        methodName: string,
+    ) {
+        localforageInstance._baseMethods =
+            localforageInstance._baseMethods || {};
+        localforageInstance._baseMethods[
+            methodName
+        ] = (localforageInstance as any)[methodName] as () => any;
         (localforageInstance as any)[methodName] = function() {
             return handleMethodCall(this, methodName, arguments);
         };

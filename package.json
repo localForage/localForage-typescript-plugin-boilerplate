@@ -9,6 +9,8 @@
   "scripts": {
     "lint": "tslint -t stylish -c tslint.json 'lib/**/*.ts'",
     "prebuild": "npm run lint",
+    "precommit": "lint-staged",
+    "prettify": "prettier --write \"lib/**/*.ts\" \"test/**/*.ts\"",
     "build": "rollup -c rollup.config.umd.js && rollup -c rollup.config.es6.js",
     "pretest": "rollup -c rollup.config.test.js",
     "test": "mocha build/test-bundle.js",
@@ -30,6 +32,7 @@
   "devDependencies": {
     "mocha": "^3.5.0",
     "requirejs": "^2.2.0",
+    "prettier": "^1.11.1",
     "rollup": "^0.47.2",
     "rollup-plugin-multi-entry": "^2.0.1",
     "rollup-plugin-typescript": "^0.8.1",
@@ -40,5 +43,11 @@
   },
   "dependencies": {
     "localforage": ">=1.5.0"
+  },
+  "lint-staged": {
+    "{lib,test}/**/*.ts": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
