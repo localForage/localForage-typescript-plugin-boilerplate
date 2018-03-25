@@ -3,18 +3,22 @@
   "version": "1.0.0",
   "description": "A simple typescript plugin boilerplate for localForage.",
   "homepage": "https://github.com/localForage-extensions/localForage-typescript-plugin-boilerplate",
-  "main": "dist/localforage-plugin-boilerplate.js",
-  "jsnext:main": "dist/localforage-plugin-boilerplate.es6.js",
+  "main": "dist/localforage-typescript-plugin-boilerplate.js",
+  "jsnext:main": "dist/localforage-typescript-plugin-boilerplate.es6.js",
   "typings": "dist/lib/index.d.ts",
   "scripts": {
     "lint": "tslint -t stylish -c tslint.json '{lib,test}/**/*.ts'",
-    "prebuild": "npm run prettify && npm run lint",
+    "lint-fix": "tslint --fix -t stylish -c tslint.json '{lib,test}/**/*.ts'",
+    "prebuild": "npm run prettify && npm run lint-fix",
     "precommit": "lint-staged",
     "prettify": "prettier --write \"lib/**/*.ts\" \"test/**/*.ts\"",
-    "build": "rollup -c rollup.config.umd.js && rollup -c rollup.config.es6.js",
+    "build:umd": "rollup -c rollup.config.umd.js",
+    "build:es6": "rollup -c rollup.config.es6.js",
+    "build": "npm run build:umd && npm run build:es6",
     "pretest": "rollup -c rollup.config.test.js",
-    "test": "mocha build/test-bundle.js",
-    "prepublish": "npm run build && npm test"
+    "test:mocha": "mocha build/test-bundle.js",
+    "test": "npm run build && npm run test:mocha",
+    "prepublish": "npm test"
   },
   "repository": {
     "type": "git",
@@ -33,16 +37,16 @@
     "lint-staged": "^7.0.0",
     "mocha": "^3.5.0",
     "prettier": "^1.11.1",
-    "rollup": "^0.47.2",
-    "rollup-plugin-multi-entry": "^2.0.1",
+    "rollup": "^0.57.1",
+    "rollup-plugin-multi-entry": "^2.0.2",
     "rollup-plugin-typescript": "^0.8.1",
-    "rollup-plugin-typescript2": "^0.5.0",
+    "rollup-plugin-typescript2": "^0.12.0",
     "source-map-support": "^0.4.15",
     "tslint": "^5.9.1",
-    "typescript": "^2.4.2"
+    "typescript": "^2.7.2"
   },
   "dependencies": {
-    "localforage": ">=1.5.0"
+    "localforage": "^1.5.0"
   },
   "lint-staged": {
     "{lib,test}/**/*.ts": [

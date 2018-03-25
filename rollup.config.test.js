@@ -2,10 +2,14 @@ import typescript from 'rollup-plugin-typescript2';
 import multiEntry from 'rollup-plugin-multi-entry';
 
 export default {
-  entry: 'test/**/*_test.js',
+  input: 'test/**/*_test.js',
   plugins: [typescript(), multiEntry()],
-  format: 'cjs',
-  intro: 'require("source-map-support").install();',
-  dest: 'build/test-bundle.js',
-  sourceMap: true
+  output: [
+    {
+      intro: 'require("source-map-support").install();',
+      file: 'build/test-bundle.js',
+      format: 'cjs',
+      sourceMap: true
+    }
+  ]
 };
