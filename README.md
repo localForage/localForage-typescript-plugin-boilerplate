@@ -1,5 +1,6 @@
 localForage-typescript-plugin-boilerplate
 ==============================
+[![Build Status](https://travis-ci.org/localForage/localForage-typescript-plugin-boilerplate.svg?branch=master)](https://travis-ci.org/localForage/localForage-typescript-plugin-boilerplate)
 [![npm](https://img.shields.io/npm/dm/localforage-typescript-plugin-boilerplate.svg)](https://www.npmjs.com/package/localforage-typescript-plugin-boilerplate)
 
 A simple TypeScript plugin boilerplate for [localForage](https://github.com/mozilla/localForage).
