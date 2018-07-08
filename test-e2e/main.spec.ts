@@ -1,11 +1,8 @@
-import * as localforage from 'localforage';
 import * as m from 'mochainon';
 
-describe('First test', function() {
-    it('works as expected', function() {
-        return m.chai.expect(Promise.resolve(true)).to.eventually.deep.equal(true);
-    });
-});
+import * as localforage from 'localforage';
+// load this repo's extension
+import '../../';
 
 describe('Localforage', function() {
     it('should get ready', function() {
@@ -16,4 +13,3 @@ describe('Localforage', function() {
         m.chai.expect(localforage.supports(localforage.INDEXEDDB)).to.be.true;
     });
 });
-

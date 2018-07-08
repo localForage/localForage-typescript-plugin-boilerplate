@@ -21,8 +21,7 @@ export function openStoreTransaction(self: LocalForage, fn: any, mode: string) {
     return new Promise(function(resolve, reject) {
         const dbInfo = ((self as any) as LocalForageWithDbInfo<IDBDatabase>)
             ._dbInfo;
-        self
-            .ready()
+        self.ready()
             .then(function() {
                 const transaction = dbInfo.db.transaction(
                     dbInfo.storeName,

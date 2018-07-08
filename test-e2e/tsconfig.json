@@ -17,6 +17,7 @@
   },
   "include": [
     "**/*.ts",
-    "../node_modules/@resin.io/**/*.d.ts"
+    "../node_modules/@resin.io/**/*.d.ts",
+    "../typings/*.ts"
   ]
 }
