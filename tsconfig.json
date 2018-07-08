@@ -12,6 +12,7 @@
     "outDir": "dist"
   },
   "include": [
-    "lib/**/*.ts"
+    "lib/**/*.ts",
+    "typings/**/*.d.ts"
   ]
 }
