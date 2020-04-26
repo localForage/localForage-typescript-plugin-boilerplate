@@ -22,7 +22,7 @@ module.exports = config => {
     karmaConfig.files = [
         LF_BROWSER_BUNDLE,
         BROWSER_BUNDLE,
-        'build/test-e2e/**/*.spec.js',
+        'tests/**/*.spec.ts',
     ];
     config.set(karmaConfig);
 };

@@ -2,7 +2,7 @@ import * as m from 'mochainon';
 
 import * as localforage from 'localforage';
 // load this repo's extension
-import '../../';
+import '../';
 
 const { expect } = m.chai;
 
