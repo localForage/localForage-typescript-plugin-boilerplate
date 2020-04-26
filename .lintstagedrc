@@ -1,5 +1,5 @@
 {
-	"{lib,test,test-e2e}/**/*.ts": [
+	"{lib,tests,test-unit}/**/*.ts": [
 		"prettier --write",
 		"tslint -t stylish --fix",
 		"git add"

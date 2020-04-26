@@ -15,7 +15,7 @@ export default {
             preserveConstEnums: true,
             removeComments: true,
             sourceMap: true,
-            strictNullChecks: true
+            strictNullChecks: true,
         }),
     ],
     external: ['localforage'],
@@ -24,7 +24,7 @@ export default {
             file: pkg.main,
             format: 'umd',
             globals: {
-                localforage: 'localforage'
+                localforage: 'localforage',
             },
             name: pkg.name.replace(/-([a-z])/g, g => g[1].toUpperCase()),
             // sourceMap: true
